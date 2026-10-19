@@ -1,0 +1,863 @@
+{
+  "generatedBy": "tools/reference_model.py",
+  "cases": [
+    {
+      "label": "2017 spreadsheet example (0.6/1000)",
+      "model": "original2017",
+      "incidencePer1000": 0.6,
+      "gestationalAgeWeeks": 40,
+      "gestationalAgeDays": 6,
+      "temperatureF": 98.6,
+      "romHours": 8,
+      "gbs": "negative",
+      "antibiotics": "broad2to4h",
+      "expected": {
+        "intercept": 40.7489,
+        "riskAtBirthPer1000": 0.06133384565922623,
+        "vitalsAtBirth": "routine",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 0.025147786742460484,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "routine"
+          },
+          "equivocal": {
+            "riskPer1000": 0.306594009937389,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "routine"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 1.2986685507791853,
+            "care": "stronglyConsiderEmpiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "2024 spreadsheet example (0.3/1000)",
+      "model": "updated2024",
+      "incidencePer1000": 0.3,
+      "gestationalAgeWeeks": 40,
+      "gestationalAgeDays": 3,
+      "temperatureF": 99.0,
+      "romHours": 16,
+      "gbs": "negative",
+      "antibiotics": "broad2to4h",
+      "expected": {
+        "intercept": 57.38161393955795,
+        "riskAtBirthPer1000": 0.035957477746875265,
+        "vitalsAtBirth": "routine",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 0.012944989889154051,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "routine"
+          },
+          "equivocal": {
+            "riskPer1000": 0.1312322890034992,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "routine"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 0.5211304570827054,
+            "care": "stronglyConsiderEmpiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "original2017: term, afebrile, no ROM, GBS neg",
+      "model": "original2017",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 40,
+      "gestationalAgeDays": 0,
+      "temperatureF": 98.6,
+      "romHours": 0,
+      "gbs": "negative",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 40.5656,
+        "riskAtBirthPer1000": 0.03882520437182017,
+        "vitalsAtBirth": "routine",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 0.01591869844001123,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "routine"
+          },
+          "equivocal": {
+            "riskPer1000": 0.19409587861048175,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "routine"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 0.8224493110783084,
+            "care": "stronglyConsiderEmpiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "original2017: term, maternal fever 102.5F, ROM 24h, GBS pos, no abx",
+      "model": "original2017",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 40,
+      "gestationalAgeDays": 0,
+      "temperatureF": 102.5,
+      "romHours": 24,
+      "gbs": "positive",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 40.5656,
+        "riskAtBirthPer1000": 10.434077353921566,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 4.304470490164451,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "equivocal": {
+            "riskPer1000": 50.08022308339275,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 182.69592000025992,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "original2017: same as above with broad abx >4h",
+      "model": "original2017",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 40,
+      "gestationalAgeDays": 0,
+      "temperatureF": 102.5,
+      "romHours": 24,
+      "gbs": "positive",
+      "antibiotics": "broadOver4h",
+      "expected": {
+        "intercept": 40.5656,
+        "riskAtBirthPer1000": 3.209935724986016,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 1.3185708385522168,
+            "care": "bloodCulture",
+            "vitals": "every4hFor24h"
+          },
+          "equivocal": {
+            "riskPer1000": 15.84621726925618,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 63.90687101328377,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "original2017: same as above with GBS-specific abx >2h",
+      "model": "original2017",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 40,
+      "gestationalAgeDays": 0,
+      "temperatureF": 102.5,
+      "romHours": 24,
+      "gbs": "positive",
+      "antibiotics": "gbsSpecificOver2h",
+      "expected": {
+        "intercept": 40.5656,
+        "riskAtBirthPer1000": 3.6806104135264697,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 1.5123343946416272,
+            "care": "bloodCulture",
+            "vitals": "every4hFor24h"
+          },
+          "equivocal": {
+            "riskPer1000": 18.136045200334202,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 72.62908924622803,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "original2017: 35 wk, 99.5F, ROM 18h, GBS unknown",
+      "model": "original2017",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 35,
+      "gestationalAgeDays": 0,
+      "temperatureF": 99.5,
+      "romHours": 18,
+      "gbs": "unknown",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 40.5656,
+        "riskAtBirthPer1000": 2.3647155583170907,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 0.9708879444683304,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "every4hFor24h"
+          },
+          "equivocal": {
+            "riskPer1000": 11.7127881421811,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 47.84647509419182,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "original2017: 34 wk, ROM 240h (max), GBS unknown",
+      "model": "original2017",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 34,
+      "gestationalAgeDays": 0,
+      "temperatureF": 98.6,
+      "romHours": 240,
+      "gbs": "unknown",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 40.5656,
+        "riskAtBirthPer1000": 11.397808939222783,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 4.704739662110074,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "equivocal": {
+            "riskPer1000": 54.50413387872386,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 196.412396049489,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "original2017: 43 6/7 wk (max GA)",
+      "model": "original2017",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 43,
+      "gestationalAgeDays": 6,
+      "temperatureF": 98.6,
+      "romHours": 2,
+      "gbs": "negative",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 40.5656,
+        "riskAtBirthPer1000": 0.41452909657138587,
+        "vitalsAtBirth": "routine",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 0.16999850649738513,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "routine"
+          },
+          "equivocal": {
+            "riskPer1000": 2.0692144844135836,
+            "care": "bloodCulture",
+            "vitals": "every4hFor24h"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 8.715041553616961,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "original2017: 37 3/7, 100.4F, ROM 12.5h, GBS pos, broad 2-3.9h",
+      "model": "original2017",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 37,
+      "gestationalAgeDays": 3,
+      "temperatureF": 100.4,
+      "romHours": 12.5,
+      "gbs": "positive",
+      "antibiotics": "broad2to4h",
+      "expected": {
+        "intercept": 40.5656,
+        "riskAtBirthPer1000": 0.6479811878035435,
+        "vitalsAtBirth": "routine",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 0.26577389472500756,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "routine"
+          },
+          "equivocal": {
+            "riskPer1000": 3.231530056280551,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 13.559715087602527,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "original2017: 0.3/1000 incidence",
+      "model": "original2017",
+      "incidencePer1000": 0.3,
+      "gestationalAgeWeeks": 39,
+      "gestationalAgeDays": 2,
+      "temperatureF": 101.0,
+      "romHours": 30,
+      "gbs": "negative",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 40.0528,
+        "riskAtBirthPer1000": 1.0546111896153207,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 0.4326597975819392,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "every4hFor24h"
+          },
+          "equivocal": {
+            "riskPer1000": 5.2509052941612735,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 21.891401496948916,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "original2017: 1/1000 incidence",
+      "model": "original2017",
+      "incidencePer1000": 1.0,
+      "gestationalAgeWeeks": 39,
+      "gestationalAgeDays": 2,
+      "temperatureF": 101.0,
+      "romHours": 30,
+      "gbs": "negative",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 41.25747325965052,
+        "riskAtBirthPer1000": 3.509189938523462,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 1.4417529118337251,
+            "care": "bloodCulture",
+            "vitals": "every4hFor24h"
+          },
+          "equivocal": {
+            "riskPer1000": 17.303070646938128,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 69.47037493369346,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "original2017: 4/1000 incidence",
+      "model": "original2017",
+      "incidencePer1000": 4.0,
+      "gestationalAgeWeeks": 39,
+      "gestationalAgeDays": 2,
+      "temperatureF": 101.0,
+      "romHours": 30,
+      "gbs": "negative",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 42.64677514183436,
+        "riskAtBirthPer1000": 13.931782312638648,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 5.759371349845022,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "equivocal": {
+            "riskPer1000": 65.9819281262982,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 230.48908509616047,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "original2017: 0.1/1000 incidence",
+      "model": "original2017",
+      "incidencePer1000": 0.1,
+      "gestationalAgeWeeks": 39,
+      "gestationalAgeDays": 2,
+      "temperatureF": 101.0,
+      "romHours": 30,
+      "gbs": "negative",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 38.95398767132322,
+        "riskAtBirthPer1000": 0.35171405454324123,
+        "vitalsAtBirth": "routine",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 0.14423269227507757,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "routine"
+          },
+          "equivocal": {
+            "riskPer1000": 1.756099692943457,
+            "care": "bloodCulture",
+            "vitals": "every4hFor24h"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 7.403737188127495,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "updated2024: term, afebrile, no ROM, GBS neg",
+      "model": "updated2024",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 40,
+      "gestationalAgeDays": 0,
+      "temperatureF": 98.6,
+      "romHours": 0,
+      "gbs": "negative",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 57.892639643356624,
+        "riskAtBirthPer1000": 0.11743173725116919,
+        "vitalsAtBirth": "routine",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 0.04227860291428573,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "routine"
+          },
+          "equivocal": {
+            "riskPer1000": 0.4284924966283305,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "routine"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 1.7000650286802221,
+            "care": "stronglyConsiderEmpiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "updated2024: term, maternal fever 102.5F, ROM 24h, GBS pos, no abx",
+      "model": "updated2024",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 40,
+      "gestationalAgeDays": 0,
+      "temperatureF": 102.5,
+      "romHours": 24,
+      "gbs": "positive",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 57.892639643356624,
+        "riskAtBirthPer1000": 28.14496462021116,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 10.31804389063715,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "equivocal": {
+            "riskPer1000": 95.59895357370847,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 295.7352876768047,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "updated2024: same as above with broad abx >4h",
+      "model": "updated2024",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 40,
+      "gestationalAgeDays": 0,
+      "temperatureF": 102.5,
+      "romHours": 24,
+      "gbs": "positive",
+      "antibiotics": "broadOver4h",
+      "expected": {
+        "intercept": 57.892639643356624,
+        "riskAtBirthPer1000": 2.7822828435502864,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 1.0034085541775335,
+            "care": "bloodCulture",
+            "vitals": "every4hFor24h"
+          },
+          "equivocal": {
+            "riskPer1000": 10.081004632436908,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 38.882637544236424,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "updated2024: same as above with GBS-specific abx >2h",
+      "model": "updated2024",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 40,
+      "gestationalAgeDays": 0,
+      "temperatureF": 102.5,
+      "romHours": 24,
+      "gbs": "positive",
+      "antibiotics": "gbsSpecificOver2h",
+      "expected": {
+        "intercept": 57.892639643356624,
+        "riskAtBirthPer1000": 3.4248473879482644,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 1.2356534914261879,
+            "care": "bloodCulture",
+            "vitals": "every4hFor24h"
+          },
+          "equivocal": {
+            "riskPer1000": 12.388259039983232,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 47.46569007232158,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "updated2024: 35 wk, 99.5F, ROM 18h, GBS unknown",
+      "model": "updated2024",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 35,
+      "gestationalAgeDays": 0,
+      "temperatureF": 99.5,
+      "romHours": 18,
+      "gbs": "unknown",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 57.892639643356624,
+        "riskAtBirthPer1000": 12.477893932893334,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 4.528203378377255,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "equivocal": {
+            "riskPer1000": 44.086529211334316,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 154.8454954980116,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "updated2024: 34 wk, ROM 240h (max), GBS unknown",
+      "model": "updated2024",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 34,
+      "gestationalAgeDays": 0,
+      "temperatureF": 98.6,
+      "romHours": 240,
+      "gbs": "unknown",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 57.892639643356624,
+        "riskAtBirthPer1000": 40.79174355420647,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 15.078682560896322,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "equivocal": {
+            "riskPer1000": 134.36523465683885,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 381.4307432141094,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "updated2024: 43 6/7 wk (max GA)",
+      "model": "updated2024",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 43,
+      "gestationalAgeDays": 6,
+      "temperatureF": 98.6,
+      "romHours": 2,
+      "gbs": "negative",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 57.892639643356624,
+        "riskAtBirthPer1000": 1.5374852202567661,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 0.5540398492634283,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "every4hFor24h"
+          },
+          "equivocal": {
+            "riskPer1000": 5.589049389732399,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 21.840219005689455,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "updated2024: 37 3/7, 100.4F, ROM 12.5h, GBS pos, broad 2-3.9h",
+      "model": "updated2024",
+      "incidencePer1000": 0.5,
+      "gestationalAgeWeeks": 37,
+      "gestationalAgeDays": 3,
+      "temperatureF": 100.4,
+      "romHours": 12.5,
+      "gbs": "positive",
+      "antibiotics": "broad2to4h",
+      "expected": {
+        "intercept": 57.892639643356624,
+        "riskAtBirthPer1000": 0.6103382233419825,
+        "vitalsAtBirth": "routine",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 0.21980762087850825,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "routine"
+          },
+          "equivocal": {
+            "riskPer1000": 2.224137203932017,
+            "care": "bloodCulture",
+            "vitals": "every4hFor24h"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 8.77758078215119,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "updated2024: 0.3/1000 incidence",
+      "model": "updated2024",
+      "incidencePer1000": 0.3,
+      "gestationalAgeWeeks": 39,
+      "gestationalAgeDays": 2,
+      "temperatureF": 101.0,
+      "romHours": 30,
+      "gbs": "negative",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 57.38161393955795,
+        "riskAtBirthPer1000": 1.7669617231509507,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 0.6368263789493158,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "every4hFor24h"
+          },
+          "equivocal": {
+            "riskPer1000": 6.41935200391335,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 25.024022374798964,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "updated2024: 1/1000 incidence",
+      "model": "updated2024",
+      "incidencePer1000": 1.0,
+      "gestationalAgeWeeks": 39,
+      "gestationalAgeDays": 2,
+      "temperatureF": 101.0,
+      "romHours": 30,
+      "gbs": "negative",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 58.58628719920847,
+        "riskAtBirthPer1000": 5.8697746667409145,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 2.121087074057612,
+            "care": "bloodCulture",
+            "vitals": "every4hFor24h"
+          },
+          "equivocal": {
+            "riskPer1000": 21.09652316494508,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 78.86251274495409,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "updated2024: 4/1000 incidence",
+      "model": "updated2024",
+      "incidencePer1000": 4.0,
+      "gestationalAgeWeeks": 39,
+      "gestationalAgeDays": 2,
+      "temperatureF": 101.0,
+      "romHours": 30,
+      "gbs": "negative",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 59.975589081392314,
+        "riskAtBirthPer1000": 23.140690414852077,
+        "vitalsAtBirth": "every4hFor24h",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 8.45588049346467,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "equivocal": {
+            "riskPer1000": 79.58324993922395,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 255.6691441000023,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    },
+    {
+      "label": "updated2024: 0.1/1000 incidence",
+      "model": "updated2024",
+      "incidencePer1000": 0.1,
+      "gestationalAgeWeeks": 39,
+      "gestationalAgeDays": 2,
+      "temperatureF": 101.0,
+      "romHours": 30,
+      "gbs": "negative",
+      "antibiotics": "none",
+      "expected": {
+        "intercept": 56.28280161088118,
+        "riskAtBirthPer1000": 0.5895639926161262,
+        "vitalsAtBirth": "routine",
+        "presentations": {
+          "wellAppearing": {
+            "riskPer1000": 0.21232315131608684,
+            "care": "noCultureNoAntibiotics",
+            "vitals": "routine"
+          },
+          "equivocal": {
+            "riskPer1000": 2.1485517947964814,
+            "care": "bloodCulture",
+            "vitals": "every4hFor24h"
+          },
+          "clinicalIllness": {
+            "riskPer1000": 8.481175253085965,
+            "care": "empiricAntibiotics",
+            "vitals": "perNICU"
+          }
+        }
+      }
+    }
+  ]
+}
