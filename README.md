@@ -1,2 +1,2 @@
 # kaiser-sepsis-score
-iOS port of Kaiser Permanente Sepsis Scoring System
+iOS port of Kaiser Permanente Newborn Sepsis Scoring System
