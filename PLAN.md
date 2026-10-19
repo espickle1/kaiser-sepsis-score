@@ -70,6 +70,37 @@ Independent SwiftUI implementation of the published Kaiser Permanente EOS risk m
 - [ ] TestFlight with a few clinicians; collect feedback
 - [ ] Tag v1.0
 
+## First build on the Mac
+
+Prerequisites: macOS with Xcode 15+ (open it once so it installs components and accepts the licence), Homebrew.
+
+1. **Get the branch**
+   ```bash
+   git fetch && git switch feat/ios-eos-calculator
+   ```
+2. **Run the core tests first** (no signing or simulator needed)
+   ```bash
+   cd Packages/EOSCalculatorCore && swift test
+   ```
+   Expect all tests to pass: spreadsheet parity, intercept table, 26 vectors, recommendations, validation.
+   If anything fails, paste the output back to Claude; if the failure is a numeric mismatch,
+   check `tools/reference_model.py` and `docs/MODEL.md` before changing constants.
+3. **Set your identity in `project.yml`** — search for `TODO` and set `bundleIdPrefix`, `PRODUCT_BUNDLE_IDENTIFIER`
+   (currently `org.example.eoscalculator`) and `DEVELOPMENT_TEAM`.
+4. **Generate and open the project**
+   ```bash
+   brew install xcodegen
+   xcodegen generate
+   open EOSCalculator.xcodeproj
+   ```
+5. **Build and run** the `EOSCalculator` scheme on an iPhone simulator (iOS 17+). Fix any compile errors, then tick the
+   Phase 2 and Phase 3 boxes above.
+6. **Smoke test in the simulator:** the acknowledgement gate appears on first launch; entering the first row of
+   `docs/VERIFICATION.md` shows the expected risks; switching model version and incidence changes the result;
+   *Clear* resets the form.
+7. **Then continue with Phase 4:** the hand-check against the live calculator (`docs/VERIFICATION.md`), and send the
+   KP email (`docs/KP-permission-email.md`).
+
 ## Build instructions (macOS)
 
 ```bash
